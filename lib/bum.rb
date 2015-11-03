@@ -25,6 +25,14 @@ class Bum
     @hunger -= rand(18..25)
   end
 
+  def fight(other)
+    if other == self
+      @health -= rand(15..25)
+    else
+      @health -= rand(25..33)
+      other.health -= rand(25..33)
+    end
+
   def buy(sum, &x)
     if sum <= @money
       @money -= sum
@@ -38,5 +46,6 @@ class Bum
     true if @health == 0 or @money >= 6000 or @addiction > 100 or @hunger > 100
   end
 
-  attr_reader :bum_id, :name, :patronym, :money, :addiction, :health
+  attr_reader :bum_id, :name, :patronym, :money, :addiction
+  attr_accessor :health
 end
